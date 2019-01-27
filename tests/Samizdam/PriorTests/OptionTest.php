@@ -30,4 +30,13 @@ class OptionTest extends TestCase
 
 		$this->assertSame('foo', $option->getValue());
 	}
+
+	public function testAddVote()
+	{
+		$option = new Option('foo');
+
+		$this->assertSame(0, $option->getVote());
+		$option->addVote();
+		$this->assertSame(1, $option->getVote());
+	}
 }
