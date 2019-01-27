@@ -15,4 +15,23 @@ class ApplicationTest extends TestCase
 		$this->assertSame(file_get_contents(__DIR__ .'/../../../../view/index.html'), $app->renderInitialPage());
 	}
 
+	public function testRenderProgressPage()
+	{
+		$app = new Application();
+
+		$progressData = [
+			[
+				'value' => 'a',
+			],
+			[
+				'value' => 'b',
+			],
+		];
+		$this->assertStringContainsString(<<<HTML
+		<label><input type="radio" value="a"/></label>
+		<label><input type="radio" value="b"/></label>
+HTML
+		, $app->renderProgressPage($progressData));
+	}
+
 }
