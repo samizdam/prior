@@ -2,7 +2,7 @@
 
 namespace Samizdam\Prior;
 
-class OptionsSet
+class OptionSet
 {
 
 	private $options;

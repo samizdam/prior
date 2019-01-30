@@ -2,7 +2,7 @@
 
 namespace Samizdam\Prior;
 
-class PairStorage implements \Iterator
+class PairSet implements \Iterator, \Countable
 {
 
 	private $pairs;
@@ -18,7 +18,7 @@ class PairStorage implements \Iterator
 	 * @return mixed Can return any type.
 	 * @since 5.0.0
 	 */
-	public function current()
+	public function current(): Pair
 	{
 		return $this->pairs->current();
 	}
@@ -65,6 +65,20 @@ class PairStorage implements \Iterator
 	 */
 	public function rewind()
 	{
-		return $this->pairs->rewind();
+		$this->pairs->rewind();
+	}
+
+	/**
+	 * Count elements of an object
+	 * @link http://php.net/manual/en/countable.count.php
+	 * @return int The custom count as an integer.
+	 * </p>
+	 * <p>
+	 * The return value is cast to an integer.
+	 * @since 5.1.0
+	 */
+	public function count()
+	{
+		return $this->pairs->count();
 	}
 }

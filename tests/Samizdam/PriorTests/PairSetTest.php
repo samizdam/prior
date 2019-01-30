@@ -5,9 +5,9 @@ namespace Samizdam\PriorTests;
 use PHPUnit\Framework\TestCase;
 use Samizdam\Prior\Option;
 use Samizdam\Prior\Pair;
-use Samizdam\Prior\PairStorage;
+use Samizdam\Prior\PairSet;
 
-class PairStorageTest extends TestCase
+class PairSetTest extends TestCase
 {
 
 	public function testNext()
@@ -21,7 +21,7 @@ class PairStorageTest extends TestCase
 
 		$pairs = [$pair1, $pair2];
 
-		$pairStorage = new PairStorage($pairs);
+		$pairStorage = new PairSet($pairs);
 		$this->assertSame($pair1, $pairStorage->current());
 		$pairStorage->next();
 		$this->assertSame($pair2, $pairStorage->current());

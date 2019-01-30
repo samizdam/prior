@@ -4,14 +4,14 @@ namespace Samizdam\PriorTests;
 
 use PHPUnit\Framework\TestCase;
 use Samizdam\Prior\Option;
-use Samizdam\Prior\OptionsSet;
+use Samizdam\Prior\OptionSet;
 
-class OptionsSetTest extends TestCase
+class OptionSetTest extends TestCase
 {
 
 	public function testGetOptions()
 	{
-		$set = new OptionsSet();
+		$set = new OptionSet();
 		$optionA = new Option('foo');
 		$set->addOption($optionA);
 		$optionB = new Option('bar');
@@ -22,7 +22,7 @@ class OptionsSetTest extends TestCase
 
 	public function testGetOptions_in_order()
 	{
-		$set = new OptionsSet();
+		$set = new OptionSet();
 		$optionA = new Option('a');
 		$optionA->addVote();
 
