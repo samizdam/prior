@@ -18,7 +18,7 @@ class Pair implements \Iterator
 	 * @return mixed Can return any type.
 	 * @since 5.0.0
 	 */
-	public function current()
+	public function current(): Option
 	{
 		return $this->options->current();
 	}

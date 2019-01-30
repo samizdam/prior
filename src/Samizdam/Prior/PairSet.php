@@ -7,9 +7,10 @@ class PairSet implements \Iterator, \Countable
 
 	private $pairs;
 
-	public function __construct(array $pairs)
+	public function __construct(array $pairs, $position = 0)
 	{
-		$this->pairs = \SplFixedArray::fromArray($pairs);
+		$this->pairs = \SplFixedArray::fromArray($pairs, false);
+		$this->setPosition($position);
 	}
 
 	/**
@@ -80,5 +81,13 @@ class PairSet implements \Iterator, \Countable
 	public function count()
 	{
 		return $this->pairs->count();
+	}
+
+	public function setPosition(int $position)
+	{
+		$this->pairs->rewind();
+		for($i = 0; $i++ < $position;) {
+			$this->pairs->next();
+		}
 	}
 }

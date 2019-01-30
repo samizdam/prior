@@ -2,6 +2,8 @@
 
 namespace Samizdam\Prior\Web;
 
+use Samizdam\Prior\PairSet;
+
 class Application
 {
 
@@ -10,12 +12,21 @@ class Application
 		return file_get_contents(__DIR__ . '/../../../../view/index.html');
 	}
 
-	public function renderProgressPage(array $progressData)
+	public function renderProgressPage(PairSet $progressData)
 	{
-		list($a, $b) = $progressData;
+		$currentPair = $progressData->current();
+		$optionA = $currentPair->current();
+		$currentPair->next();
+		$optionB = $currentPair->current();
+		$valueA = $optionA->getValue();
+		$valueB = $optionB->getValue();
+
 		return <<<HTML
-		<label><input type="radio" value="${a['value']}"/></label>
-		<label><input type="radio" value="${b['value']}"/></label>
+		<form method="post" action="/progress">
+			<label><input type="radio" name="vote" value="${valueA}"/>${valueA}</label>
+			<label><input type="radio" name="vote" value="${valueB}"/>${valueB}</label>
+			<input type="submit"/>
+		</form>
 HTML;
 	}
 }
