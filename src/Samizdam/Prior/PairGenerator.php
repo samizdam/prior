@@ -9,9 +9,19 @@ class PairGenerator
 	{
 		$pairs = [];
 		$numberOfPairs = $this->getNumberOfPairs($options);
-
+		$normalizedOptions = \SplFixedArray::fromArray($options, false);
+		$currentOptionIndex = 0;
+		$nextOptionIndex = 1;
 		for ($i = 0; $i++ < $numberOfPairs;) {
-			$pairs[] = new Pair($options[0], $options[1]);
+			$firstOption = $normalizedOptions->offsetGet($currentOptionIndex);
+			$secondOption = $normalizedOptions->offsetGet($nextOptionIndex);
+			$pairs[] = new Pair($firstOption, $secondOption);
+
+			$nextOptionIndex++;
+			if ($nextOptionIndex === $normalizedOptions->count()) {
+				$currentOptionIndex++;
+				$nextOptionIndex = $currentOptionIndex + 1;
+			}
 		}
 
 		return new PairSet($pairs);
@@ -24,7 +34,6 @@ class PairGenerator
 		$k = 2;
 		return factorial($n) / (factorial($n - $k) * factorial($k));
 	}
-
 
 }
 
