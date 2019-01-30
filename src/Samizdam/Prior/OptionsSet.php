@@ -17,7 +17,7 @@ class OptionsSet
 		$this->options->insert($option, $option->getVote());
 	}
 
-	public function getOptions(): iterable
+	public function getOptions(): \Iterator
 	{
 		return $this->options;
 	}

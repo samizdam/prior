@@ -9,5 +9,5 @@ $app = new Application();
 if(empty($_SESSION)) {
 	echo $app->renderInitialPage();
 } else {
-	$app->renderProgressPage();
+	$app->renderProgressPage($_SESSION);
 }
