@@ -10,7 +10,9 @@
             "email": "samizdam@inbox.ru"
         }
     ],
-    "require": {},
+    "require": {
+        "league/climate": "^3.4"
+    },
     "autoload": {
         "psr-4": {
             "Samizdam\\Prior\\": [

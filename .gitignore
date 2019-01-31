@@ -1,3 +1,5 @@
 /.idea/
-
+/_coverage/
 /vendor/
+
+/phpunit.xml
